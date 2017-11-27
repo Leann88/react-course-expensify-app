@@ -1,0 +1,45 @@
+import moment from 'moment';
+
+const filtersReducerDefaultState = {
+  text: '',
+  sortBy: 'date',
+  startDate: moment().startOf('month'),
+  endDate: moment().endOf('month')
+};
+
+export default (state = filtersReducerDefaultState, action) => {
+  switch (action.type) {
+    case 'SET_TEXT_FILTER':
+      return {
+        ...state,
+        text: action.text
+      };
+      break;
+    case 'SORT_BY_DATE':
+      return {
+        ...state,
+        sortBy: 'date'
+      }
+      break;
+    case 'SORT_BY_AMOUNT':
+      return {
+        ...state, // Spread operator for objects, sends new object with changed sortBy value
+        sortBy: 'amount'
+      }
+      break;
+    case 'SET_START_DATE':
+      return {
+        ...state, // Spread operator for objects, sends new object with changed sortBy value
+        startDate: action.startDate
+      }
+      break;
+    case 'SET_END_DATE':
+      return {
+        ...state, // Spread operator for objects, sends new object with changed sortBy value
+        endDate: action.endDate
+      }
+      break;
+    default:
+      return state;
+  }
+};
