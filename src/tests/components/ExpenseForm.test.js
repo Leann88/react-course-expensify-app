@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { shallow } from 'enzyme';
 import ExpenseForm from '../../components/ExpenseForm';
 import expenses from '../fixtures/expenses';
@@ -23,7 +24,7 @@ test('should render error for invalid form submission', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-est('should set description on input change', () => {
+test('should set description on input change', () => {
   const value = 'New description';
   const wrapper = shallow(<ExpenseForm />);
   wrapper.find('input').at(0).simulate('change', {
